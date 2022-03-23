@@ -82,9 +82,9 @@ function import(url)
     end
 
     for index, random in ipairs(numbers) do
-        local pixel = pixels[random]
+        local pixel = pixels[random-1]
 
-        local r, g, b = pixels[random][1], pixels[random][2], pixels[random][3]
+        local r, g, b = pixels[random-1][1], pixels[random-1][2], pixels[random-1][3]
         
         wait(waittime)
         
