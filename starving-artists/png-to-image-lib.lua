@@ -4,7 +4,7 @@
 
 ]]--
 
-local Grid = game.Players.LocalPlayer.PlayerGui.MainGui.PaintFrame.Grid
+local grid = game.Players.LocalPlayer.PlayerGui.MainGui.PaintFrame.Grid
 local HTTPService = game:GetService("HttpService")
 
 function GetJSON(url)
