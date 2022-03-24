@@ -62,7 +62,7 @@ local lib = {}
 lib.Player = game.Players.LocalPlayer
 
 function lib:Draw(image, waittime, notifications)
-	assert(image, sendNotification("Image", "No image!"))
+	if not image then return sendNotification("Image", "No image!") end
 
 	waittime = waittime or 0.05
 	notifications = notifications or true
