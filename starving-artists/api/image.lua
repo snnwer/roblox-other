@@ -49,6 +49,14 @@ function sendNotification(title, text)
 })
 end
 
+
+local numbers = {}
+
+function arrangerandom()
+    local number = math.random(1, 1024)
+    if not table.find(numbers, number) then table.insert(numbers, number) else arrangerandom() end
+end
+
 local lib = {}
 
 lib.Player = game.Players.LocalPlayer
