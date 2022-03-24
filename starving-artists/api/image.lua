@@ -94,3 +94,5 @@ function lib:Draw(image, waittime, notifications)
 	end
 	import(image)
 end
+
+return lib
