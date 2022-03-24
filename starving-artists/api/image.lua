@@ -1,7 +1,3 @@
-getgenv().image = 'https://i.quotev.com/img/q/u/20/7/12/t6efqy5vyp.jpg'
-getgenv().waittime = .05 -- Рекомендованно 0.05, пойдешь ниже = может быть бан
-getgenv().notifications = false
-
 local Grid = game.Players.LocalPlayer.PlayerGui.MainGui.PaintFrame.Grid
 local HTTPService = game:GetService("HttpService")
 
