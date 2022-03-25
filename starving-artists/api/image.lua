@@ -78,22 +78,22 @@ function lib:Draw(image, waittime, notifications)
 		end
 
 		local cells = {}
-		Grid['1'].BackgroundColor3 = Color3.fromRGB(
+		--[[Grid['1'].BackgroundColor3 = Color3.fromRGB(
 			pixels[1][1],
 			pixels[1][2],
 			pixels[1][3]
-		)
+		)]]
 	
 		for i = 1, 1024 do
 			arrangerandom()
 		end
 	
 		for index, random in ipairs(numbers) do
-			local prev = random - 1
-			if random == 1 then prev = random end
-			local pixel = pixels[prev]
+			--[[local prev = random - 1
+			if random == 1 then prev = random end]]
+			local pixel = pixels[random]
 
-			local r, g, b = pixels[prev][1], pixels[prev][2], pixels[prev][3]
+			local r, g, b = pixel[1], pixel[2], pixel[3]
 			if waittime > 0 then wait(waittime) end
 
 			Grid[tostring(random)].BackgroundColor3 = Color3.fromRGB(r,g,b)
