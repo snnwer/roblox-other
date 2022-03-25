@@ -62,11 +62,13 @@ function lib:GetPixels(image)
 	return GetJSON(image)	
 end
 
-function lib:Draw(image, waittime, notifications)
+function lib:Draw(image, waittime, notifications, style)
 	if not image then return sendNotification("Image", "No image!") end
 
 	waittime = waittime or 0.05
-	if notifications == nil then notifications = true end
+	if notifications ~= false then notifications = true end
+    if string.lower(style) ~= "random" and string.lower(style) ~= "rows" and string.lower(style) ~= "reverserows" then style = nil end
+    style = style or "random"
 
 	function import(url)
 		local start = os.time()
@@ -77,28 +79,31 @@ function lib:Draw(image, waittime, notifications)
 			sendNotification("Start", "If it did not start painting for you, check F9", Color3.fromRGB(255, 100, 100))
 		end
 
-		local cells = {}
-		--[[Grid['1'].BackgroundColor3 = Color3.fromRGB(
-			pixels[1][1],
-			pixels[1][2],
-			pixels[1][3]
-		)]]
+        local ls = string.lower(style)
 	
-		for i = 1, 1024 do
-			arrangerandom()
-		end
+        for i=1, 1024 do
+            if ls == "random" then
+                arrangerandom()
+            elseif ls == "rows" then
+                table.insert(numbers, i)
+            elseif ls == "reverserows" then
+                table.insert(numbers, 1025-i)
+            end
+        end
 	
 		for index, random in ipairs(numbers) do
-			--[[local prev = random - 1
-			if random == 1 then prev = random end]]
 			local pixel = pixels[random]
-			if random == 32 then print(pixel[1], pixel[2], pixel[3], pixels[random-1][1],pixels[random-1][2],pixels[random-1][3]) end
 
 			local r, g, b = pixel[1], pixel[2], pixel[3]
 			if waittime > 0 then wait(waittime) end
 
-			Grid[tostring(random)].BackgroundColor3 = Color3.fromRGB(r,g,b)
-			table.insert(cells, pixel)
+            local nextn = random + 1
+
+            local first = pixels[1024]
+            if nextn == 2 then Grid[tostring(random)].BackgroundColor3 = Color3.fromRGB(first[1],first[2],first[3]) end
+            if not Grid:FindFirstChild(tostring(nextn)) then continue end
+
+			Grid[tostring(nextn)].BackgroundColor3 = Color3.fromRGB(r,g,b)
 		end
 		if notifications then sendNotification("Finish", "Finished at ".. os.date("%b. %d, %H:%M", os.time()) .. ", time taken: ".. os.time() - start .."s") end
 	end
