@@ -50,8 +50,8 @@ end
 local numbers = {}
 
 function arrangerandom()
-    local number = math.random(1, 1024)
-    if not table.find(numbers, number) then table.insert(numbers, number) else arrangerandom() end
+	local number = math.random(1, 1024)
+	if not table.find(numbers, number) then table.insert(numbers, number) else arrangerandom() end
 end
 
 local lib = {}
@@ -67,8 +67,8 @@ function lib:Draw(image, waittime, notifications, style)
 
 	waittime = waittime or 0.05
 	if notifications ~= false then notifications = true end
-    if string.lower(style) ~= "random" and string.lower(style) ~= "rows" and string.lower(style) ~= "reverserows" then style = nil end
-    style = style or "random"
+	if string.lower(style) ~= "random" and string.lower(style) ~= "rows" and string.lower(style) ~= "reverserows" then style = nil end
+	style = style or "random"
 
 	function import(url)
 		local start = os.time()
@@ -79,17 +79,17 @@ function lib:Draw(image, waittime, notifications, style)
 			sendNotification("Start", "If it did not start painting for you, check F9", Color3.fromRGB(255, 100, 100))
 		end
 
-        local ls = string.lower(style)
+		local ls = string.lower(style)
 	
-        for i=1, 1024 do
-            if ls == "random" then
-                arrangerandom()
-            elseif ls == "rows" then
-                table.insert(numbers, i)
-            elseif ls == "reverserows" then
-                table.insert(numbers, 1025-i)
-            end
-        end
+		for i=1, 1024 do
+			if ls == "random" then
+				arrangerandom()
+			elseif ls == "rows" then
+				table.insert(numbers, i)
+			elseif ls == "reverserows" then
+				table.insert(numbers, 1025-i)
+			end
+		end
 	
 		for index, random in ipairs(numbers) do
 			local pixel = pixels[random]
@@ -97,11 +97,11 @@ function lib:Draw(image, waittime, notifications, style)
 			local r, g, b = pixel[1], pixel[2], pixel[3]
 			if waittime > 0 then wait(waittime) end
 
-            local nextn = random + 1
+			local nextn = random + 1
 
-            local first = pixels[1024]
-            if nextn == 2 then Grid[tostring(random)].BackgroundColor3 = Color3.fromRGB(first[1],first[2],first[3]) end
-            if not Grid:FindFirstChild(tostring(nextn)) then continue end
+			local first = pixels[1024]
+			if nextn == 2 then Grid[tostring(random)].BackgroundColor3 = Color3.fromRGB(first[1],first[2],first[3]) end
+			if not Grid:FindFirstChild(tostring(nextn)) then continue end
 
 			Grid[tostring(nextn)].BackgroundColor3 = Color3.fromRGB(r,g,b)
 		end
