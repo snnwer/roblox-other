@@ -57,6 +57,10 @@ local lib = {}
 
 lib.Player = game.Players.LocalPlayer
 
+function lib:GetPixels(image)
+	return GetJSON(image)	
+end
+
 function lib:Draw(image, waittime, notifications)
 	if not image then return sendNotification("Image", "No image!") end
 
