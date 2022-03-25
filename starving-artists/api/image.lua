@@ -70,7 +70,7 @@ function lib:Draw(image, waittime, notifications)
 
 	function import(url)
 		local start = os.time()
-		local pixels = GetJSON(url)
+		local pixels = lib:GetPixels(url)
 	
 		if notifications then
 			sendNotification("Start", "Started at ".. os.date("%b. %d, %H:%M", start) .. ", approx. time: ".. math.round((1024/(1/waittime)) + os.time()-start) .."s")
