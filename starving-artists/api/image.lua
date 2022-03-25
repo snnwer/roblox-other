@@ -8,9 +8,10 @@ end
 getgenv().IrisAd = true
 local notifications = loadstring(game:HttpGet("https://api.irisapp.ca/Scripts/IrisBetterNotifications.lua"))()
 
-function sendNotification(title, text)
+function sendNotification(title, text, color)
 	 title = title or "None"
 	 text = text or "No text"
+	 color = color or Color3.fromRGB(35,35,35)
 
 	 notifications.Notify(title, text, "rbxassetid://6492856164", {
 	 Duration = 5,
@@ -30,14 +31,14 @@ function sendNotification(title, text)
 	 GradientSettings = {
 			GradientEnabled = false,
 			SolidColorEnabled = false,
-			SolidColor = Color3.fromRGB(35,35,35),
+			SolidColor = color,
 			Retract = false,
 			Extend = false
 	 },
 
 	 Main = {
-			BorderColor3 = Color3.fromRGB(35, 35, 35),
-			BackgroundColor3 = Color3.fromRGB(35, 35, 35),
+			BorderColor3 = color,
+			BackgroundColor3 = color,
 			BackgroundTransparency = 0.05,
 			Rounding = false,
 			BorderSizePixel = 0
@@ -65,7 +66,7 @@ function lib:Draw(image, waittime, notifications)
 	if not image then return sendNotification("Image", "No image!") end
 
 	waittime = waittime or 0.05
-	notifications = notifications or true
+	if notifications == nil then notifications = true end
 
 	function import(url)
 		local start = os.time()
@@ -73,7 +74,7 @@ function lib:Draw(image, waittime, notifications)
 	
 		if notifications then
 			sendNotification("Start", "Started at ".. os.date("%b. %d, %H:%M", start) .. ", approx. time: ".. math.round((1024/(1/waittime)) + os.time()-start) .."s")
-			sendNotification("Start", "If it did not start painting for you, check F9")
+			sendNotification("Start", "If it did not start painting for you, check F9", Color3.fromRGB(255, 100, 100))
 		end
 
 		local cells = {}
