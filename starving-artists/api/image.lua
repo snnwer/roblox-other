@@ -92,6 +92,7 @@ function lib:Draw(image, waittime, notifications)
 			--[[local prev = random - 1
 			if random == 1 then prev = random end]]
 			local pixel = pixels[random]
+			if random == 32 then print(pixel[1], pixel[2], pixel[3], pixels[random-1][1],pixels[random-1][2],pixels[random-1][3]) end
 
 			local r, g, b = pixel[1], pixel[2], pixel[3]
 			if waittime > 0 then wait(waittime) end
