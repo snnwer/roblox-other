@@ -4,7 +4,7 @@ local Mouse = LocalPlayer:GetMouse()
 
 local api = {}
 
-if not getgenv().APIranbefore then getgenv().APIranbefore = true; warn("\n This API might not work anymore and has limited features.\n You can update the repo yourself at https://raw.rawgithubusercontent.com/snnwer/roblox-other/pc-store-simulator/api.lua\n") end
+if not getgenv().APIranbefore then getgenv().APIranbefore = true; warn("\n This API might not work anymore and has limited features.\n You can update the repo yourself at https://raw.githubusercontent.com/snnwer/roblox-other/main/pc-store-simulator/api.lua\n") end
 
 api.LocalPlayer = LocalPlayer
 api.Backpack = Backpack
