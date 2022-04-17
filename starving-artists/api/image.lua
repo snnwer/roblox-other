@@ -2,48 +2,54 @@ local Grid = game.Players.LocalPlayer.PlayerGui.MainGui.PaintFrame.GridHolder.Gr
 local HTTPService = game:GetService("HttpService")
 
 function GetJSON(url)
-	return HTTPService:JSONDecode(game:HttpGet("http://localhost:57554/get?url="..url))
+	local success, err = pcall(function()
+        return HTTPService:JSONDecode(game:HttpGet("http://localhost:57554/get?url="..url))
+    end)
+
+    if not success then
+        return getgenv().sendNotification("Error", "Got error: "..err)
+    end
 end
 
 getgenv().IrisAd = true
-local notifications = loadstring(game:HttpGet("https://api.irisapp.ca/Scripts/IrisBetterNotifications.lua"))()
-
-function sendNotification(title, text, color)
-	 title = title or "None"
-	 text = text or "No text"
-	 color = color or Color3.fromRGB(35,35,35)
-
-	 notifications.Notify(title, text, "rbxassetid://6492856164", {
-	 Duration = 5,
-
-	 TitleSettings = {
-			Font = Enum.Font.GothamBlack,
-			TextScaled = false,
-			TextSize = 16
-	 },
-
-	 DescriptionSettings = {
-			Font = Enum.Font.Gotham,
-			TextScaled = true,
-			TextSize = 18
-	 },
-
-	 GradientSettings = {
-			GradientEnabled = false,
-			SolidColorEnabled = false,
-			SolidColor = color,
-			Retract = false,
-			Extend = false
-	 },
-
-	 Main = {
-			BorderColor3 = color,
-			BackgroundColor3 = color,
-			BackgroundTransparency = 0.05,
-			Rounding = false,
-			BorderSizePixel = 0
-	 }
-})
+if not getgenv().notificationlib then getgenv().notificationlib = loadstring(game:HttpGet("https://api.irisapp.ca/Scripts/IrisBetterNotifications.lua"))() end
+if not getgenv().sendNotification then 
+    getgenv().sendNotification = function(title, text)
+        title = title or "None"
+        text = text or "No text"
+    
+        lib.Notify(title, text, "rbxassetid://6492856164", {
+            Duration = 5,
+        
+            TitleSettings = {
+                Font = Enum.Font.GothamBlack,
+                TextScaled = false,
+                TextSize = 16
+            },
+        
+            DescriptionSettings = {
+                Font = Enum.Font.Gotham,
+                TextScaled = true,
+                TextSize = 18
+            },
+        
+            GradientSettings = {
+                GradientEnabled = false,
+                SolidColorEnabled = false,
+                SolidColor = Color3.fromRGB(35,35,35),
+                Retract = false,
+                Extend = false
+            },
+        
+            Main = {
+                BorderColor3 = Color3.fromRGB(35, 35, 35),
+                BackgroundColor3 = Color3.fromRGB(35, 35, 35),
+                BackgroundTransparency = 0.05,
+                Rounding = false,
+                BorderSizePixel = 0
+            }
+        })
+    end
 end
 
 
@@ -63,21 +69,20 @@ function lib:GetPixels(image)
 end
 
 function lib:Draw(image, waittime, notifications, style)
-	if not image then return sendNotification("Image", "No image!") end
+	if not image then return getgenv().sendNotification("Image", "No image!") end
 
 	waittime = waittime or 0.05
 	style = style or "random"
 	if notifications ~= false then notifications = true end
 	if string.lower(style) ~= "random" and string.lower(style) ~= "rows" and string.lower(style) ~= "reverserows" then style = nil end
-	style = style or "random"
 
 	function import(url)
 		local start = os.time()
 		local pixels = lib:GetPixels(url)
 	
 		if notifications then
-			sendNotification("Start", "Started at ".. os.date("%b. %d, %H:%M", start) .. ", approx. time: ".. math.round((1024/(1/waittime)) + os.time()-start) .."s")
-			sendNotification("Start", "If it did not start painting for you, check F9", Color3.fromRGB(255, 100, 100))
+			getgenv().sendNotification("Start", "Started at ".. os.date("%b. %d, %H:%M", start) .. ", approx. time: ".. math.round((1024/(1/waittime)) + os.time()-start) .."s")
+			getgenv().sendNotification("Start", "If it did not start painting for you, check F9", Color3.fromRGB(255, 100, 100))
 		end
 
 		local ls = string.lower(style)
@@ -106,7 +111,7 @@ function lib:Draw(image, waittime, notifications, style)
 
 			Grid[tostring(nextn)].BackgroundColor3 = Color3.fromRGB(r,g,b)
 		end
-		if notifications then sendNotification("Finish", "Finished at ".. os.date("%b. %d, %H:%M", os.time()) .. ", time taken: ".. os.time() - start .."s") end
+		if notifications then getgenv().sendNotification("Finish", "Finished at ".. os.date("%b. %d, %H:%M", os.time()) .. ", time taken: ".. os.time() - start .."s") end
 	end
 	import(image)
 end
