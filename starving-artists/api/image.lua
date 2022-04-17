@@ -66,6 +66,7 @@ function lib:Draw(image, waittime, notifications, style)
 	if not image then return sendNotification("Image", "No image!") end
 
 	waittime = waittime or 0.05
+	style = style or "random"
 	if notifications ~= false then notifications = true end
 	if string.lower(style) ~= "random" and string.lower(style) ~= "rows" and string.lower(style) ~= "reverserows" then style = nil end
 	style = style or "random"
