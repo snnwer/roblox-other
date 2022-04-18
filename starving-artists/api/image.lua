@@ -2,23 +2,27 @@ local Grid = game.Players.LocalPlayer.PlayerGui.MainGui.PaintFrame.GridHolder.Gr
 local HTTPService = game:GetService("HttpService")
 
 function GetJSON(url)
+    local result
+   
 	local success, err = pcall(function()
-        return HTTPService:JSONDecode(game:HttpGet("http://localhost:57554/get?url="..url))
+        result = HTTPService:JSONDecode(game:HttpGet("http://localhost:57554/get?url="..url))
     end)
 
     if not success then
         return getgenv().sendNotification("Error", "Got error: "..err)
     end
+    return result
+
 end
 
 getgenv().IrisAd = true
-if not getgenv().notificationlib then getgenv().notificationlib = loadstring(game:HttpGet("https://api.irisapp.ca/Scripts/IrisBetterNotifications.lua"))() end
-if not getgenv().sendNotification then 
+if (getgenv().notificationlib == nil) then getgenv().notificationlib = loadstring(game:HttpGet("https://api.irisapp.ca/Scripts/IrisBetterNotifications.lua"))() end
+if (getgenv().sendNotification == nil) then 
     getgenv().sendNotification = function(title, text)
         title = title or "None"
         text = text or "No text"
     
-        lib.Notify(title, text, "rbxassetid://6492856164", {
+        getgenv().notificationlib.Notify(title, text, "rbxassetid://6492856164", {
             Duration = 5,
         
             TitleSettings = {
