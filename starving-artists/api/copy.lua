@@ -3,8 +3,7 @@ local player = game.Players.LocalPlayer
 local lib = {}
 
 function lib:Copy(victim, number: number)
-	victim = victim or return false
-	number = number or return false
+	if (victim == nil) or (number == nil) then return false end
 	local tg = workspace.Plots[victim.Name].Easels[number].Canvas.SurfaceGui.Grid
 
 	function copyGrid()
