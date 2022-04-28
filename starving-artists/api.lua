@@ -26,11 +26,11 @@ local player = {};
 
 local http = game:GetService("HttpService");
 
-function json(url)
+function json(url, port)
     local result;
    
 	local success, err = pcall(function()
-        result = http:JSONDecode(game:HttpGet("http://localhost:57554/get?url="..url));
+        result = http:JSONDecode(game:HttpGet("http://localhost:".. port .."/get?url="..url));
     end);
 
     if not success then player.notify("Error", "Got error: ".. err); return; end;
@@ -72,8 +72,8 @@ local lib = {};
 	local localplayer = player.self;
 	lib.player = player;
 
-	function lib:getImage(image)
-		return json(image);
+	function lib:getImage(image, port)
+		return json(image, port);
 	end;
 
 	function lib:copy(plr: string, a: number, t: number, n: bool, s: string)
@@ -116,7 +116,7 @@ local lib = {};
 		if n then player.notify("Finish", "Finished at ".. os.date("%b. %d, %H:%M", os.time()) .. ", time taken: ".. os.time() - start .."s") end;
 	end;
 
-	function lib:import(i: string, t: number, n: bool, s: string)
+	function lib:import(i: string, t: number, n: bool, s: string, port: string)
 		
 		t = t or 0.05;
 		s = s or "random";
@@ -133,7 +133,7 @@ local lib = {};
 			player.notify("Start", "If it did not start painting for you, check F9", Color3.fromRGB(255, 100, 100));
 		end;
 
-		local pixels = lib:getImage(i);
+		local pixels = lib:getImage(i, port);
 
 		local order = arrange(s);
 	
