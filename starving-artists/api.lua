@@ -27,6 +27,8 @@ local player = {};
 local http = game:GetService("HttpService");
 
 function json(url, port)
+    port = port or "57554";
+
     local result;
    
 	local success, err = pcall(function()
@@ -78,7 +80,7 @@ local lib = {};
 
 	function lib:copy(plr: string, a: number, t: number, n: bool, s: string)
 
-        p = game.Players[plr]
+        	p = game.Players[plr]
 
 		t = t or 0.05;
 		s = s or "random";
@@ -117,6 +119,8 @@ local lib = {};
 	end;
 
 	function lib:import(i: string, t: number, n: bool, s: string, port: string)
+
+		port = port or "57554"
 		
 		t = t or 0.05;
 		s = s or "random";
