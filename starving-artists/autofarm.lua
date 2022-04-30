@@ -16,11 +16,11 @@ local defaultSettings = {
   minimumBought = nil
 }
 
-getgenv().settings = getgenv().settings or defaultSettings
+getgenv().currentsettings = getgenv().currentsettings or defaultSettings
 
 wait(2)
 pcall(function()
-        if getgenv().settings.ClaimBooth then
+        if getgenv().currentsettings.ClaimBooth then
             local lp = game.Players.LocalPlayer
             local waitForPlots = workspace:WaitForChild("Plots")
 
@@ -36,13 +36,13 @@ pcall(function()
                                     end
                                 end
 
-                                if getgenv().settings.JoinMSG then
+                                if getgenv().currentsettings.JoinMSG then
                                     pcall(
                                         function()
                                             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(
-                                                getgenv().settings.JoinMSG,
+                                                getgenv().currentsettings.JoinMSG,
                                                 "All")
-                                            getgenv().settings.JoinMSG = nil
+                                            getgenv().currentsettings.JoinMSG = nil
                                         end)
                                 end
                             end
@@ -132,8 +132,8 @@ pcall(function()
                         buyers = buyers + 1
                     end
 
-                    if getgenv().settings.minimumBought then
-                        if v.Value > getgenv().settings.minimumBought then
+                    if getgenv().currentsettings.minimumBought then
+                        if v.Value > getgenv().currentsettings.minimumBought then
                             suggarAmount = suggarAmount + 1
                         end
                     end
@@ -141,10 +141,10 @@ pcall(function()
             end
         end
 
-        if countPlayers >= getgenv().settings.MinimumPlayers and buyers >= getgenv().settings.MinimumBuyers then
-            if getgenv().settings.minimumBought then
+        if countPlayers >= getgenv().currentsettings.MinimumPlayers and buyers >= getgenv().currentsettings.MinimumBuyers then
+            if getgenv().currentsettings.minimumBought then
                 if suggarAmount > 0 then
-                    local waitTime = getgenv().settings.MinutesOnServer * 60
+                    local waitTime = getgenv().currentsettings.MinutesOnServer * 60
                     local client = game.GetService(game, "Players").LocalPlayer
 
                     for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.Idled)) do
@@ -156,7 +156,7 @@ pcall(function()
                     hop()
                 end
             else
-                local waitTime = MinutesOnServer * 60
+                local waitTime = getgenv().currentsettings.MinutesOnServer * 60
                 local client = game.GetService(game, "Players").LocalPlayer
 
                 for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.Idled)) do
