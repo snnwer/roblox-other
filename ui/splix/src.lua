@@ -48,7 +48,7 @@ local sections = {}
 -- Theme Variables
 --local themes = {}
 local theme = {
-    accent = Color3.fromRGB(50, 100, 255),
+    accent = Color3.fromRGB(200, 0, 0),
     light_contrast = Color3.fromRGB(30, 30, 30),
     dark_contrast = Color3.fromRGB(20, 20, 20),
     outline = Color3.fromRGB(0, 0, 0),
@@ -386,7 +386,7 @@ do
         local frame_inline = utility:Create("Frame", {Vector2.new(1,1), main_frame}, {
             Size = utility:Size(1, -2, 1, -2, main_frame),
             Position = utility:Position(0, 1, 0, 1, main_frame),
-            Color = theme.accent
+            Color = theme.outline
         })
         --
         local inner_frame = utility:Create("Frame", {Vector2.new(1,1), frame_inline}, {
@@ -1024,10 +1024,10 @@ do
         --
         local page = {open = false, sections = {}, sectionOffset = {left = 0, right = 0}, window = window}
         --
-        local position = 0
+        local position = 4
         --
         for i,v in pairs(window.pages) do
-            position = position + (v.page_button.Size.X+2)
+            position = position + v.page_button.Size.X
         end
         --
         local textbounds = utility:GetTextBounds(name, theme.textsize, theme.font)
