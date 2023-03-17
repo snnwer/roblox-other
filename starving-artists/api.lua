@@ -7,6 +7,8 @@
 
 ]]--
 
+local vps = 'https://print.snnwer.repl.co'
+
 if (getgenv().library == nil) then
 	getgenv().library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))();
 end;
@@ -27,18 +29,17 @@ local player = {};
 local http = game:GetService("HttpService");
 
 function json(url, port)
-    port = port or "57554";
+    port = port or "80";
 
-    local result;
+    local request;
    
 	local success, err = pcall(function()
-        result = http:JSONDecode(game:HttpGet("http://localhost:".. port .."/get?url="..url));
-    end);
+        	result = (syn and syn.request or http and http.request or http_request or httprequest or request)(vps .. ':' .. port .."/get?url="..url));
+    	end);
 
-    if not success then player.notify("Error", "Got error: ".. err); return; end;
+    if (not success) or (result.StatusCode ~= 200) then player.notify("Error", "Failed to parse image. \nCauses: \n1) File size too big;\n2) Image isn't parseable"); return; end;
 
-    return result;
-
+    return game:GetService('HttpService'):JSONDecode(result);
 end;
 
 function arrange(style: string)
