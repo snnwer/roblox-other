@@ -2248,13 +2248,13 @@ function library.createdropdown(holder, content, flag, callback, default, max, s
 
     utility.outline(dropdown, "Object Border")
 
-    utility.create("Image", {
-        Size = UDim2.new(1, 0, 1, 0),
-        Transparency = 0.03,
-        ZIndex = 8,
-        Parent = dropdown,
-        Data = library.gradient,
-    })
+    -- utility.create("Image", {
+    --     Size = UDim2.new(1, 0, 1, 0),
+    --     Transparency = 0.03,
+    --     ZIndex = 8,
+    --     Parent = dropdown,
+    --     Data = library.gradient,
+    -- })
     
     local value = utility.create("Text", {
         Text = placeholder,
@@ -2291,13 +2291,13 @@ function library.createdropdown(holder, content, flag, callback, default, max, s
 
     utility.outline(contentframe, "Object Border")
 
-    utility.create("Image", {
-        Size = UDim2.new(1, 0, 1, 0),
-        Transparency = 0.03,
-        ZIndex = 13,
-        Parent = contentframe,
-        Data = library.gradient
-    })
+    -- utility.create("Image", {
+    --     Size = UDim2.new(1, 0, 1, 0),
+    --     Transparency = 0.03,
+    --     ZIndex = 13,
+    --     Parent = contentframe,
+    --     Data = library.gradient
+    -- })
 
     local contentholder = utility.create("Square", {
         Transparency = 0,
@@ -2692,13 +2692,13 @@ function library.createslider(min, max, parent, text, default, float, flag, call
         Parent = parent
     })
     utility.outline(slider, "Object Border")
-    utility.create("Image", {
-        Size = UDim2.new(1, 0, 1, 0),
-        Transparency = 0.03,
-        ZIndex = 9,
-        Parent = slider,
-        Data = library.gradient
-    })
+    -- utility.create("Image", {
+    --     Size = UDim2.new(1, 0, 1, 0),
+    --     Transparency = 0.03,
+    --     ZIndex = 9,
+    --     Parent = slider,
+    --     Data = library.gradient
+    -- })
     local fill = utility.create("Square", {
         Filled = true,
         Thickness = 0,
@@ -3018,13 +3018,13 @@ function library.createcolorpicker(default, defaultalpha, parent, count, flag, c
 
     utility.outline(alphaframe, "Object Border")
 
-    utility.create("Image", {
-        Size = UDim2.new(1, 0, 1, 0),
-        ZIndex = 15,
-        Transparency = 1,
-        Parent = alphaframe,
-        Data = decode("iVBORw0KGgoAAAANSUhEUgAAAAkAAABuCAYAAAD1YDnyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFMSURBVFhHvZMhTMNQFEX/WOZwKBwON4dDNMHN4XBzc3M43BwOh8PhULip1s3hcLg53Nxcue9mIy/ty/8kDfcktzlpsv97xEZ1XacjVVUdLKWmaQ6W0slfNmrbdgIh/tf+1PCX3YUvu7MPP4WQQR8evuzO6s4gRFN3DiG5unFpvaOjWd0FhOTqwiv8ekdHs7pLCNHUTSFEU3cFIZq6awjR1N1AiKZuBiG5uuLsEX6Hn9XdQkiurjh7hFf4Wd0dhGjq5hCiqVtAiKZuCSGaunsI0dQ9QMjguuKsbgUhg+uKs7pHCNHUPUGIpu4ZQjR1LxCiqXuFEE3dG4Ro6t4hJFcX/mv9ekdHs7o1hOTqwiv8ekdHs7rfOzR1GwjR1H1AiKbuE0I0dV8QoqnbQkiurjh7hN/hZ3XfEJKrK84e4RV+VreDEE3dHkL+uy6NfwDz0OfO0eCa+AAAAABJRU5ErkJggg==")
-    })
+    -- utility.create("Image", {
+    --     Size = UDim2.new(1, 0, 1, 0),
+    --     ZIndex = 15,
+    --     Transparency = 1,
+    --     Parent = alphaframe,
+    --     Data = decode("iVBORw0KGgoAAAANSUhEUgAAAAkAAABuCAYAAAD1YDnyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFMSURBVFhHvZMhTMNQFEX/WOZwKBwON4dDNMHN4XBzc3M43BwOh8PhULip1s3hcLg53Nxcue9mIy/ty/8kDfcktzlpsv97xEZ1XacjVVUdLKWmaQ6W0slfNmrbdgIh/tf+1PCX3YUvu7MPP4WQQR8evuzO6s4gRFN3DiG5unFpvaOjWd0FhOTqwiv8ekdHs7pLCNHUTSFEU3cFIZq6awjR1N1AiKZuBiG5uuLsEX6Hn9XdQkiurjh7hFf4Wd0dhGjq5hCiqVtAiKZuCSGaunsI0dQ9QMjguuKsbgUhg+uKs7pHCNHUPUGIpu4ZQjR1LxCiqXuFEE3dG4Ro6t4hJFcX/mv9ekdHs7o1hOTqwiv8ekdHs7rfOzR1GwjR1H1AiKbuE0I0dV8QoqnbQkiurjh7hN/hZ3XfEJKrK84e4RV+VreDEE3dHkL+uy6NfwDz0OfO0eCa+AAAAABJRU5ErkJggg==")
+    -- })
 
     local alphapicker = utility.create("Square", {
         Filled = true,
@@ -3049,13 +3049,13 @@ function library.createcolorpicker(default, defaultalpha, parent, count, flag, c
 
     utility.outline(rgbinput, "Object Border")
 
-    utility.create("Image", {
-        Size = UDim2.new(1, 0, 1, 0),
-        Transparency = 0.03,
-        ZIndex = 15,
-        Parent = rgbinput,
-        Data = library.gradient
-    })
+    -- utility.create("Image", {
+    --     Size = UDim2.new(1, 0, 1, 0),
+    --     Transparency = 0.03,
+    --     ZIndex = 15,
+    --     Parent = rgbinput,
+    --     Data = library.gradient
+    -- })
 
     local rgbtext = utility.create("Text", {
         Text = string.format("%s, %s, %s", math.floor(default.R * 255), math.floor(default.G * 255), math.floor(default.B * 255)),
@@ -3106,13 +3106,13 @@ function library.createcolorpicker(default, defaultalpha, parent, count, flag, c
 
     utility.outline(hexinput, "Object Border")
 
-    utility.create("Image", {
-        Size = UDim2.new(1, 0, 1, 0),
-        Transparency = 0.03,
-        ZIndex = 15,
-        Parent = hexinput,
-        Data = library.gradient
-    })
+    -- utility.create("Image", {
+    --     Size = UDim2.new(1, 0, 1, 0),
+    --     Transparency = 0.03,
+    --     ZIndex = 15,
+    --     Parent = hexinput,
+    --     Data = library.gradient
+    -- })
 
     local hextext = utility.create("Text", {
         Text = default:ToHex(),
@@ -3456,13 +3456,13 @@ function library.createkeybind(before, default, parent, blacklist, flag, mode, c
         Theme = 'Object Background'
     })
 
-    utility.create("Image", {
-        Size = UDim2.new(1, 0, 1, 0),
-        Transparency = 0.03,
-        ZIndex = 9,
-        Parent = keybutton,
-        Data = library.gradient
-    })
+    -- utility.create("Image", {
+    --     Size = UDim2.new(1, 0, 1, 0),
+    --     Transparency = 0.03,
+    --     ZIndex = 9,
+    --     Parent = keybutton,
+    --     Data = library.gradient
+    -- })
 
     local outline = utility.outline(keybutton, 'Object Border')
 
@@ -3793,13 +3793,13 @@ function library:Watermark(str)
     
     utility.dragify(watermark, dragoutline)
 
-    utility.create("Image", {
-        Size = UDim2.new(1, 0, 1, 0),
-        Transparency = 0.03,
-        ZIndex = 2,
-        Parent = watermark,
-        Data = library.gradient
-    })
+    -- utility.create("Image", {
+    --     Size = UDim2.new(1, 0, 1, 0),
+    --     Transparency = 0.03,
+    --     ZIndex = 2,
+    --     Parent = watermark,
+    --     Data = library.gradient
+    -- })
     local texts, len = utility.createColoredText(utility.parseColoredText(str, 'Text'), {
 		ZIndex = 2,
 		Position = UDim2.new(0, 11, 0, 3)
@@ -4523,13 +4523,13 @@ function library:Load(options)
 	
 					utility.outline(button, "Object Border")
 	
-					utility.create("Image", {
-						Size = UDim2.new(1, 0, 1, 0),
-						Transparency = 0.03,
-						ZIndex = 9,
-						Parent = button,
-						Data = library.gradient
-					})
+					-- utility.create("Image", {
+					-- 	Size = UDim2.new(1, 0, 1, 0),
+					-- 	Transparency = 0.03,
+					-- 	ZIndex = 9,
+					-- 	Parent = button,
+					-- 	Data = library.gradient
+					-- })
 	
 					utility.create("Text", {
 						Text = name,
@@ -4609,13 +4609,13 @@ function library:Load(options)
 	
 					utility.outline(icon, "Object Border")
 	
-					utility.create("Image", {
-						Size = UDim2.new(1, 0, 1, 0),
-						Transparency = 0.03,
-						ZIndex = 8,
-						Parent = icon,
-						Data = library.gradient
-					})
+					-- utility.create("Image", {
+					-- 	Size = UDim2.new(1, 0, 1, 0),
+					-- 	Transparency = 0.03,
+					-- 	ZIndex = 8,
+					-- 	Parent = icon,
+					-- 	Data = library.gradient
+					-- })
 	
 					local title = utility.create("Text", {
 						Text = name,
@@ -4851,13 +4851,13 @@ function library:Load(options)
 	
 					utility.outline(box, "Object Border")
 	
-					utility.create("Image", {
-						Size = UDim2.new(1, 0, 1, 0),
-						Transparency = 0.03,
-						ZIndex = 8,
-						Parent = box,
-						Data = library.gradient
-					})
+					-- utility.create("Image", {
+					-- 	Size = UDim2.new(1, 0, 1, 0),
+					-- 	Transparency = 0.03,
+					-- 	ZIndex = 8,
+					-- 	Parent = box,
+					-- 	Data = library.gradient
+					-- })
 	
 					local text = utility.create("Text", {
 						Text = default,
