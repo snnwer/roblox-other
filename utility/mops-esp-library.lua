@@ -140,7 +140,7 @@ function esp.update_esp(handler, character, array)
   local bottom_bounds = 0
   local top_bounds = 0
 
-  local check = esp.check(character)
+  local check = esp.check(handler, character)
 
   if onscreen and check then
     if handler.ESP.Tracers and handler.ESP.Enabled then
