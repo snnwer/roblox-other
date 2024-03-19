@@ -1,5 +1,6 @@
 local esp = {cache = {} };
 local Camera = workspace.CurrentCamera
+local Player = game.Players.LocalPlayer
 
 function esp:unload()
   for i,v in next, esp.cache do
