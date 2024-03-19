@@ -1,4 +1,5 @@
 local esp = {cache = {} };
+local Camera = workspace.CurrentCamera
 
 function esp:unload()
   for i,v in next, esp.cache do
